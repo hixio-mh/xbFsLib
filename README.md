@@ -15,3 +15,4 @@ FATX
 FATX classes are included in this library. FATX is a modified FAT32
 file system used on storage devices by the Xbox 360. The classes
 allow all necessary operations to explore and edit FATX filesystems.
+Fully supports Xbox memory cards, HDD's, and flash drives.
