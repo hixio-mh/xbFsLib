@@ -10,6 +10,15 @@ file reading and writing. Effectively switches between using files,
 temporary cache files, and memory to give the most performance in a
 given situation.
 
+StandardFs
+--------
+The StandardFs class is a generic interface to allow multiple types
+of filesystems to be controlled using standardized methods. Filesystems
+can be standardized by implementing the StandardFs class and be manipulated
+like any other standardized filesystems.
+
+Current StandardFs implementations: FATXStandard, XISOStandard
+
 FATX
 --------
 FATX classes are included in this library. FATX is a modified FAT32
