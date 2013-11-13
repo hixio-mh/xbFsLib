@@ -47,6 +47,9 @@
     <Compile Include="FATX\Partition.cs" />
     <Compile Include="FATX\USBStream.cs" />
     <Compile Include="FATX\Utilities.cs" />
+    <Compile Include="StandardFs\Implementations\FATXStandard.cs" />
+    <Compile Include="StandardFs\Implementations\XISOStandard.cs" />
+    <Compile Include="StandardFs\StandardFs.cs" />
     <Compile Include="IO\CoreIO.cs" />
     <Compile Include="IO\ChainedStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

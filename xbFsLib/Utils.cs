@@ -90,6 +90,66 @@ namespace xbFsLib
             return hexStr;
         }
 
+        /// <summary>
+        /// Gets the extension of a filename (without the period).
+        /// </summary>
+        /// <param name="filename">The filename to use.</param>
+        /// <returns>The extension, sans dot.</returns>
+        public static string GetFilenameExtension(string filename)
+        {
+            int periodIndex = filename.LastIndexOf(".");
+            if (periodIndex < 0)
+                return "";
+            if (periodIndex >= filename.Length)
+                return "";
+            return filename.Substring(periodIndex + 1).ToLower();
+        }
+
+        /// <summary>
+        /// Returns the file name from a full path.
+        /// </summary>
+        /// <param name="path">The full path.</param>
+        /// <returns>The name of the file</returns>
+        public static string GetNameFromPath(string path)
+        {
+            path = path.Replace("/", "\\");
+            if (path.IndexOf("\\") < 0)
+                return path;
+            string[] parts = path.Split("\\".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            return parts[parts.Length - 1];
+        }
+
+        /// <summary>
+        /// Changes the filename in a path or HTTP path and returns the new path.
+        /// </summary>
+        /// <param name="path">The path to change.</param>
+        /// <param name="newFilename">The new filename to use.</param>
+        /// <returns>A path as a string.</returns>
+        public static string SetPathFilename(string path, string newFilename)
+        {
+            if (path.StartsWith("http://"))
+            {
+                string[] parts2 = path.Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                path = path.Substring(0, path.Length - parts2[parts2.Length - 1].Length) + newFilename;
+                return path;
+            }
+            path = path.Replace("/", "\\");
+            if (path.StartsWith("\\"))
+                path = path.Substring(1, path.Length - 1);
+            if (path.EndsWith("\\"))
+                path = path.Substring(0, path.Length - 1);
+            string[] parts = path.Split("\\".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string rtn = "";
+            for (int i = 0; i < parts.Length - 1; i++)
+            {
+                if (i > 0)
+                    rtn += "\\";
+                rtn += parts[i];
+            }
+            rtn += newFilename;
+            return rtn;
+        }
+
     }
 
 }
